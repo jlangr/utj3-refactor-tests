@@ -40,9 +40,9 @@ class SearchTest {
          assertTrue(matches.size() >= 1);
          // END:notNull
          var match = matches.get(0);
-         assertEquals("practical joke", match.searchString);
+         assertEquals("practical joke", match.searchString());
          assertEquals("or a vast practical joke, though t",
-            match.surroundingContext);
+            match.surroundingContext());
          stream.close();
 
          // negative
