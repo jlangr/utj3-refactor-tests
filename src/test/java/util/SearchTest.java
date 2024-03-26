@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.logging.Level;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SearchTest {
-   // START:test
    @Test
    void testSearch() throws IOException {
       var pageContent = "There are certain queer times and occasions "
@@ -24,21 +24,16 @@ class SearchTest {
          + "his own.";
       var bytes = pageContent.getBytes();
       var stream = new ByteArrayInputStream(bytes);
-      // ...
-      // END:test
       var search = new Search(stream, "practical joke", "1");
       Search.LOGGER.setLevel(Level.OFF);
       search.setSurroundingCharacterCount(10);
       search.execute();
       assertFalse(search.errored());
-      // START:notNull
+      // START:matches
       var matches = search.getMatches();
-      assertTrue(matches.size() >= 1);
-      // END:notNull
-      var match = matches.get(0);
-      assertEquals("practical joke", match.searchString);
-      assertEquals("or a vast practical joke, though t",
-         match.surroundingContext);
+      assertEquals(List.of(new Match("1", "practical joke", "or a vast practical joke, though t")),
+         matches);
+      // END:matches
       stream.close();
 
       // negative
