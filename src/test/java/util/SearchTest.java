@@ -4,45 +4,49 @@ package util;
 // http://www.gutenberg.org/cache/epub/2701/pg2701.txt 
 
 import org.junit.jupiter.api.Test;
-
 import java.io.*;
 import java.net.*;
-import java.util.*;
 import java.util.logging.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SearchTest {
+// START:test
+// START_HIGHLIGHT
+class SearchTest {
+   // END_HIGHLIGHT
    @Test
-   public void testSearch() {
+// START_HIGHLIGHT
+   void testSearch() {
+      // END_HIGHLIGHT
       try {
-        String pageContent = "There are certain queer times and occasions "
+        var pageContent = "There are certain queer times and occasions "
               + "in this strange mixed affair we call life when a man "
               + "takes this whole universe for a vast practical joke, "
               + "though the wit thereof he but dimly discerns, and more "
               + "than suspects that the joke is at nobody's expense but "
               + "his own.";
-         byte[] bytes = pageContent.getBytes();
-         ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
+         var bytes = pageContent.getBytes();
+         var stream = new ByteArrayInputStream(bytes);
+         //...
+         // END:test
          // search
-         Search search = new Search(stream, "practical joke", "1");
+         var search = new Search(stream, "practical joke", "1");
          Search.LOGGER.setLevel(Level.OFF);
          search.setSurroundingCharacterCount(10);
          search.execute();
          assertFalse(search.errored());
-         List<Match> matches = search.getMatches();
+         var matches = search.getMatches();
          assertNotNull(matches);
          assertTrue(matches.size() >= 1);
-         Match match = matches.get(0);
+         var match = matches.get(0);
          assertEquals("practical joke", match.searchString);
          assertEquals("or a vast practical joke, though t",
             match.surroundingContext);
          stream.close();
 
          // negative
-         URLConnection connection = 
+         var connection =
                new URL("http://bit.ly/15sYPA7").openConnection();
-         InputStream inputStream = connection.getInputStream();
+         var inputStream = connection.getInputStream();
          search = new Search(
             inputStream, "smelt", "http://bit.ly/15sYPA7");
          search.execute();
@@ -53,4 +57,6 @@ public class SearchTest {
          fail("exception thrown in test" + e.getMessage());
       }
    }
+   // START:test
 }
+// END:test
