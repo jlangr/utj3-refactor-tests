@@ -31,7 +31,10 @@ class SearchTest {
       assertFalse(search.errored());
       // START:matches
       var matches = search.getMatches();
-      assertEquals(List.of(new Match("1", "practical joke", "or a vast practical joke, though t")),
+      assertEquals(List.of(
+         new Match("1",
+            "practical joke",
+            "or a vast practical joke, though t")),
          matches);
       // END:matches
       stream.close();
