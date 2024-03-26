@@ -12,6 +12,7 @@ import java.util.logging.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// START:test
 public class SearchTest {
    @Test
    public void testSearch() {
@@ -54,3 +55,4 @@ public class SearchTest {
       }
    }
 }
+// END:test
