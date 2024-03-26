@@ -32,6 +32,7 @@ class SearchTest {
       search.execute();
       assertFalse(search.errored());
       // START:notNull
+      // START:matches
       var matches = search.getMatches();
       assertTrue(matches.size() >= 1);
       // END:notNull
@@ -39,6 +40,7 @@ class SearchTest {
       assertEquals("practical joke", match.searchString());
       assertEquals("or a vast practical joke, though t",
          match.surroundingContext());
+      // END:matches
       stream.close();
 
       // negative
