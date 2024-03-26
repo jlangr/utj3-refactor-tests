@@ -31,9 +31,10 @@ class SearchTest {
       search.setSurroundingCharacterCount(10);
       search.execute();
       assertFalse(search.errored());
+      // START:notNull
       var matches = search.getMatches();
-      assertNotNull(matches);
       assertTrue(matches.size() >= 1);
+      // END:notNull
       var match = matches.get(0);
       assertEquals("practical joke", match.searchString);
       assertEquals("or a vast practical joke, though t",
