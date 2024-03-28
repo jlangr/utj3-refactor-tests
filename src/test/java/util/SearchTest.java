@@ -14,11 +14,8 @@ import java.util.logging.Level;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SearchTest {
-   // START:assertEmpty
    @Test
    void testSearch() throws IOException {
-      // ...
-      // END:assertEmpty
       var pageContent = "There are certain queer times and occasions "
          + "in this strange mixed affair we call life when a man "
          + "takes this whole universe for a vast practical joke, "
@@ -27,35 +24,35 @@ class SearchTest {
          + "his own.";
       var bytes = pageContent.getBytes();
       var stream = new ByteArrayInputStream(bytes);
+      // START:constant1a
       var search = new Search(stream, "practical joke", "1");
+      // END:constant1a
       Search.LOGGER.setLevel(Level.OFF);
       search.setSurroundingCharacterCount(10);
       search.execute();
       assertFalse(search.errored());
-      // START:matches
       var matches = search.getMatches();
+      // START:constant1b
       assertEquals(List.of(
          new Match("1",
             "practical joke",
             "or a vast practical joke, though t")),
          matches);
-      // END:matches
+      // END:constant1b
       stream.close();
 
       // negative
+      // START:constant1c
       var connection =
          new URL("http://bit.ly/15sYPA7").openConnection();
       var inputStream = connection.getInputStream();
       search = new Search(
+          // START_HIGHLIGHT
          inputStream, "smelt", "http://bit.ly/15sYPA7");
-      // START:assertEmpty
-      search.execute();
-      // START_HIGHLIGHT
-      assertTrue(search.getMatches().isEmpty());
       // END_HIGHLIGHT
-      // START:test
+      // END:constant1c
+      search.execute();
+      assertTrue(search.getMatches().isEmpty());
       stream.close();
    }
-   // END:assertEmpty
-   // END:test
 }
