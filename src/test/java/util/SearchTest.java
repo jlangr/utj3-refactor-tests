@@ -51,7 +51,7 @@ class SearchTest {
       // START:assertEmpty
       search.execute();
       // START_HIGHLIGHT
-      assertEquals(0, search.getMatches().size());
+      assertTrue(search.getMatches().isEmpty());
       // END_HIGHLIGHT
       // START:test
       stream.close();
