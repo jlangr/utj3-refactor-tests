@@ -51,8 +51,12 @@ class SearchTest {
          inputStream, "smelt", "http://bit.ly/15sYPA7");
       // END_HIGHLIGHT
       // END:constant1c
+      // START:assertEmpty
       search.execute();
+      // START_HIGHLIGHT
       assertTrue(search.getMatches().isEmpty());
+      // END_HIGHLIGHT
       stream.close();
+      // END:assertEmpty
    }
 }
