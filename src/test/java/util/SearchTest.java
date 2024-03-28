@@ -13,7 +13,12 @@ import java.util.logging.Level;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// START:test
 class SearchTest {
+   // START_HIGHLIGHT
+   static final String A_TITLE = "1";
+   // END_HIGHLIGHT
+
    @Test
    void testSearch() throws IOException {
       var pageContent = "There are certain queer times and occasions "
@@ -24,35 +29,34 @@ class SearchTest {
          + "his own.";
       var bytes = pageContent.getBytes();
       var stream = new ByteArrayInputStream(bytes);
-      // START:constant1a
-      var search = new Search(stream, "practical joke", "1");
-      // END:constant1a
+      // START_HIGHLIGHT
+      var search = new Search(stream, "practical joke", A_TITLE);
+      // END_HIGHLIGHT
       Search.LOGGER.setLevel(Level.OFF);
       search.setSurroundingCharacterCount(10);
       search.execute();
       assertFalse(search.errored());
       var matches = search.getMatches();
-      // START:constant1b
       assertEquals(List.of(
-         new Match("1",
+         // START_HIGHLIGHT
+         new Match(A_TITLE,
+         // END_HIGHLIGHT
             "practical joke",
             "or a vast practical joke, though t")),
          matches);
-      // END:constant1b
       stream.close();
 
       // negative
-      // START:constant1c
       var connection =
          new URL("http://bit.ly/15sYPA7").openConnection();
       var inputStream = connection.getInputStream();
       search = new Search(
           // START_HIGHLIGHT
-         inputStream, "smelt", "http://bit.ly/15sYPA7");
+         inputStream, "smelt", A_TITLE);
       // END_HIGHLIGHT
-      // END:constant1c
       search.execute();
       assertTrue(search.getMatches().isEmpty());
       stream.close();
    }
 }
+// STOP:test
