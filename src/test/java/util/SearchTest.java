@@ -14,8 +14,11 @@ import java.util.logging.Level;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SearchTest {
+   // START:assertEmpty
    @Test
    void testSearch() throws IOException {
+      // ...
+      // END:assertEmpty
       var pageContent = "There are certain queer times and occasions "
          + "in this strange mixed affair we call life when a man "
          + "takes this whole universe for a vast practical joke, "
@@ -45,10 +48,14 @@ class SearchTest {
       var inputStream = connection.getInputStream();
       search = new Search(
          inputStream, "smelt", "http://bit.ly/15sYPA7");
+      // START:assertEmpty
       search.execute();
+      // START_HIGHLIGHT
       assertEquals(0, search.getMatches().size());
+      // END_HIGHLIGHT
       // START:test
       stream.close();
    }
+   // END:assertEmpty
    // END:test
 }
