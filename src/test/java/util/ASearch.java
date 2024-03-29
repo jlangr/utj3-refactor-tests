@@ -21,8 +21,9 @@ class ASearch {
    // END:test
    static final String A_TITLE = "1";
 
+   // START:test
    @Test
-      // STAR_:HIGHLIGHT
+      // START_HIGHLIGHT
    void returnsMatchesWithSurroundingContext() throws IOException {
       // END_HIGHLIGHT
       var stream = streamOn("There are certain queer times and occasions "
