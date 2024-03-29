@@ -41,7 +41,6 @@ class SearchTest {
       // END:constant1b
       stream.close();
 
-      // negative
       // START:constant1c
       var connection =
          new URL("http://bit.ly/15sYPA7").openConnection();
