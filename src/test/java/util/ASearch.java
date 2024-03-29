@@ -29,7 +29,7 @@ class ASearch {
    // END:suppress
 
    @Test
-   void returnsMatchesWithSurroundingContext() throws IOException {
+   void returnsMatchesWithSurroundingContext() {
       var stream = streamOn("There are certain queer times and occasions "
           + "in this strange mixed affair we call life when a man "
           + "takes this whole universe for a vast practical joke, "
