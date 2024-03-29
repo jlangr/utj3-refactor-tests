@@ -35,12 +35,17 @@ class ASearch {
           + "takes this whole universe for a vast practical joke, "
           + "though the wit thereof he but dimly discerns, and more "
           + "than suspects that the joke is at nobody's expense but his own.");
+      // START:errored
       var search = new Search(stream, "practical joke", A_TITLE);
       search.setSurroundingCharacterCount(10);
       search.execute();
+      // START_HIGHLIGHT
       assertFalse(search.errored());
+      // END_HIGHLIGHT
       var matches = search.getMatches();
       assertEquals(List.of(
+          // ...
+              // START:errored
               new Match(A_TITLE,
                   "practical joke",
                   "or a vast practical joke, though t")),
