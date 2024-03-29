@@ -23,8 +23,8 @@ class SearchTest {
    @Test
    void testSearch() throws IOException {
       // START_HIGHLIGHT
-       var stream = streamOn("There are certain queer times and occasions "
-           // END_HIGHLIGHT
+      var stream = streamOn("There are certain queer times and occasions "
+          // END_HIGHLIGHT
           + "in this strange mixed affair we call life when a man "
           + "takes this whole universe for a vast practical joke, "
           + "though the wit thereof he but dimly discerns, and more "
