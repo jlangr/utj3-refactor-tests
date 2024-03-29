@@ -51,7 +51,7 @@ class ASearch {
    // START_HIGHLIGHT
    void returnsNoMatchesWhenSearchTextNotFound() {
       var stream = streamOn("text that ain't gonna match");
-      var search = new Search(stream, "smelt", A_TITLE);
+      var search = new Search(stream, "missing search term", A_TITLE);
       // END_HIGHLIGHT
 
       search.execute();
