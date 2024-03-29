@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.logging.Level;
@@ -59,6 +60,37 @@ class ASearch {
       assertTrue(search.getMatches().isEmpty());
    }
    // END:test2
+
+   // START:test3
+   @Test
+   void erroredReturnsFalseWhenReadSucceeds() {
+      var stream = streamOn("");
+      var search = new Search(stream, "", "");
+
+      search.execute();
+
+      assertFalse(search.errored());
+   }
+   // END:test3
+
+   // START:test4
+   @Test
+   public void erroredReturnsTrueWhenUnableToReadStream() {
+      var stream = createStreamThrowingErrorWhenRead();
+      var search = new Search(stream, "", "");
+
+      search.execute();
+
+      assertTrue(search.errored());
+   }
+
+   private InputStream createStreamThrowingErrorWhenRead() {
+      return new InputStream() {
+         @Override
+         public int read() throws IOException { throw new IOException(); }
+      };
+   }
+   // END:test4
 
    private static ByteArrayInputStream streamOn(String text) {
        return new ByteArrayInputStream(text.getBytes());
