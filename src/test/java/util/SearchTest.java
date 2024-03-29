@@ -19,6 +19,7 @@ class SearchTest {
    // END:test
    static final String A_TITLE = "1";
 
+   // START:test
    @Test
    void testSearch() throws IOException {
       // START_HIGHLIGHT
