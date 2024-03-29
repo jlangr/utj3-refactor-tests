@@ -45,7 +45,7 @@ class ASearch {
       var matches = search.getMatches();
       assertEquals(List.of(
           // ...
-              // START:errored
+              // END:errored
               new Match(A_TITLE,
                   "practical joke",
                   "or a vast practical joke, though t")),
