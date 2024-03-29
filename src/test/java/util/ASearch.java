@@ -71,6 +71,4 @@ class ASearch {
    private static ByteArrayInputStream streamOn(String text) {
        return new ByteArrayInputStream(text.getBytes());
    }
-   // START:suppress
 }
-// END:suppress
