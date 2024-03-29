@@ -21,8 +21,7 @@ public class SearchTest {
             + "in this strange mixed affair we call life when a man "
             + "takes this whole universe for a vast practical joke, "
             + "though the wit thereof he but dimly discerns, and more "
-            + "than suspects that the joke is at nobody's expense but "
-            + "his own.";
+            + "than suspects that the joke is at nobody's expense but his own.";
          byte[] bytes = pageContent.getBytes();
          ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
          // search
