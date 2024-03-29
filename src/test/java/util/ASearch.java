@@ -22,15 +22,15 @@ class ASearch {
       Search.LOGGER.setLevel(Level.OFF);
    }
 
-   // START:test
+   // START:test1
    @Test
    void returnsMatchesWithSurroundingContext() {
       // START_HIGHLIGHT
       var stream = streamOn("rest of text here"
               + "1234567890search term1234567890"
                + "more rest of text");
-          // END_HIGHLIGHT
       var search = new Search(stream, "search term", A_TITLE);
+      // END_HIGHLIGHT
       search.setSurroundingCharacterCount(10);
 
       search.execute();
@@ -38,12 +38,15 @@ class ASearch {
       var matches = search.getMatches();
       assertEquals(List.of(
               new Match(A_TITLE,
+                  // START_HIGHLIGHT
                   "search term",
                   "1234567890search term1234567890")),
+          // END_HIGHLIGHT
           matches);
    }
+   // END:test1
 
-   // START:test
+   // START:test2
    @Test
    void returnsNoMatchesWhenSearchTextNotFound() throws IOException {
       var connection =
@@ -56,7 +59,7 @@ class ASearch {
          assertTrue(search.getMatches().isEmpty());
       }
    }
-   // END:test
+   // END:test2
 
    private static ByteArrayInputStream streamOn(String text) {
        return new ByteArrayInputStream(text.getBytes());
