@@ -13,19 +13,11 @@ import java.util.logging.Level;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// START:test
-// START_HIGHLIGHT
 class ASearch {
-   // END_HIGHLIGHT
-   // ...
-   // END:test
    static final String A_TITLE = "1";
 
-   // START:test
    @Test
-      // START_HIGHLIGHT
    void returnsMatchesWithSurroundingContext() throws IOException {
-      // END_HIGHLIGHT
       var stream = streamOn("There are certain queer times and occasions "
           + "in this strange mixed affair we call life when a man "
           + "takes this whole universe for a vast practical joke, "
@@ -42,32 +34,23 @@ class ASearch {
                   "practical joke",
                   "or a vast practical joke, though t")),
           matches);
-      stream.close();
    }
 
+   // START:test
    @Test
-   // START_HIGHLIGHT
    void returnsNoMatchesWhenSearchTextNotFound() throws IOException {
-      // END_HIGHLIGHT
       var connection =
          new URL("http://bit.ly/15sYPA7").openConnection();
       var inputStream = connection.getInputStream();
-      // START_HIGHLIGHT add var keyword
       var search = new Search(inputStream, "smelt", A_TITLE);
-      // END_HIGHLIGHT
 
       search.execute();
       assertTrue(search.getMatches().isEmpty());
-      // START_HIGHLIGHT change stream to inputStream
       inputStream.close();
-      // END_HIGHLIGHT
    }
-   // ...
    // END:test
 
    private static ByteArrayInputStream streamOn(String text) {
        return new ByteArrayInputStream(text.getBytes());
    }
-   // START:test
 }
-// END:test
