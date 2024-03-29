@@ -43,7 +43,6 @@ class SearchTest {
       // END:matches
       stream.close();
 
-      // negative
       var connection =
          new URL("http://bit.ly/15sYPA7").openConnection();
       var inputStream = connection.getInputStream();
