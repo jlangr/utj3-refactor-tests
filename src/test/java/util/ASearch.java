@@ -48,16 +48,15 @@ class ASearch {
 
    // START:test2
    @Test
-   void returnsNoMatchesWhenSearchTextNotFound() throws IOException {
-      var connection =
-         new URL("http://bit.ly/15sYPA7").openConnection();
-      try (var inputStream = connection.getInputStream()) {
-         var search = new Search(inputStream, "smelt", A_TITLE);
+   // START_HIGHLIGHT
+   void returnsNoMatchesWhenSearchTextNotFound() {
+      var stream = streamOn("text that ain't gonna match");
+      var search = new Search(stream, "smelt", A_TITLE);
+      // END_HIGHLIGHT
 
-         search.execute();
+      search.execute();
 
-         assertTrue(search.getMatches().isEmpty());
-      }
+      assertTrue(search.getMatches().isEmpty());
    }
    // END:test2
 
