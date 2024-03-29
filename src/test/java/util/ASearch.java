@@ -3,6 +3,7 @@ package util;
 // text courtesy of Herman Melville (Moby Dick) from
 // http://www.gutenberg.org/cache/epub/2701/pg2701.txt 
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -13,8 +14,19 @@ import java.util.logging.Level;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// START:suppress
 class ASearch {
+   // ...
+   // END:suppress
    static final String A_TITLE = "1";
+
+   // START:suppress
+   @BeforeEach
+   void suppressLogging() {
+      Search.LOGGER.setLevel(Level.OFF);
+   }
+   // ...
+   // END:suppress
 
    @Test
    void returnsMatchesWithSurroundingContext() throws IOException {
@@ -24,7 +36,6 @@ class ASearch {
           + "though the wit thereof he but dimly discerns, and more "
           + "than suspects that the joke is at nobody's expense but his own.");
       var search = new Search(stream, "practical joke", A_TITLE);
-      Search.LOGGER.setLevel(Level.OFF);
       search.setSurroundingCharacterCount(10);
       search.execute();
       assertFalse(search.errored());
@@ -53,4 +64,6 @@ class ASearch {
    private static ByteArrayInputStream streamOn(String text) {
        return new ByteArrayInputStream(text.getBytes());
    }
+   // START:suppress
 }
+// END:suppress
