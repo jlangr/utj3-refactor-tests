@@ -15,34 +15,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // START:test
 class SearchTest {
-   // START_HIGHLIGHT
+   // ...
+   // END:test
    static final String A_TITLE = "1";
-   // END_HIGHLIGHT
 
    @Test
    void testSearch() throws IOException {
-      // START:createStream
-      var pageContent = "There are certain queer times and occasions "
-         + "in this strange mixed affair we call life when a man "
-         + "takes this whole universe for a vast practical joke, "
-         + "though the wit thereof he but dimly discerns, and more "
-         + "than suspects that the joke is at nobody's expense but "
-         + "his own.";
-      var bytes = pageContent.getBytes();
-      var stream = new ByteArrayInputStream(bytes);
-      // END:createStream
       // START_HIGHLIGHT
+       var stream = streamOn("There are certain queer times and occasions "
+          + "in this strange mixed affair we call life when a man "
+          + "takes this whole universe for a vast practical joke, "
+          + "though the wit thereof he but dimly discerns, and more "
+          + "than suspects that the joke is at nobody's expense but "
+          + "his own.");
+       // END_HIGHLIGHT
       var search = new Search(stream, "practical joke", A_TITLE);
-      // END_HIGHLIGHT
+      // ...
+      // END:test
       Search.LOGGER.setLevel(Level.OFF);
       search.setSurroundingCharacterCount(10);
       search.execute();
       assertFalse(search.errored());
       var matches = search.getMatches();
       assertEquals(List.of(
-         // START_HIGHLIGHT
          new Match(A_TITLE,
-         // END_HIGHLIGHT
             "practical joke",
             "or a vast practical joke, though t")),
          matches);
@@ -53,12 +49,17 @@ class SearchTest {
          new URL("http://bit.ly/15sYPA7").openConnection();
       var inputStream = connection.getInputStream();
       search = new Search(
-          // START_HIGHLIGHT
          inputStream, "smelt", A_TITLE);
-      // END_HIGHLIGHT
       search.execute();
       assertTrue(search.getMatches().isEmpty());
       stream.close();
+      // START:test
    }
+
+   // START_HIGHLIGHT
+   private static ByteArrayInputStream streamOn(String text) {
+       return new ByteArrayInputStream(text.getBytes());
+   }
+   // END_HIGHLIGHT
 }
 // STOP:test
