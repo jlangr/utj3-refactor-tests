@@ -21,6 +21,7 @@ class SearchTest {
 
    @Test
    void testSearch() throws IOException {
+      // START:createStream
       var pageContent = "There are certain queer times and occasions "
          + "in this strange mixed affair we call life when a man "
          + "takes this whole universe for a vast practical joke, "
@@ -29,6 +30,7 @@ class SearchTest {
          + "his own.";
       var bytes = pageContent.getBytes();
       var stream = new ByteArrayInputStream(bytes);
+      // END:createStream
       // START_HIGHLIGHT
       var search = new Search(stream, "practical joke", A_TITLE);
       // END_HIGHLIGHT
