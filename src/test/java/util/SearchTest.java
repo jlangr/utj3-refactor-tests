@@ -56,7 +56,7 @@ class SearchTest {
    }
 
    // START_HIGHLIGHT
-   private static ByteArrayInputStream streamOn(String text) {
+   private ByteArrayInputStream streamOn(String text) {
        return new ByteArrayInputStream(text.getBytes());
    }
    // END_HIGHLIGHT
