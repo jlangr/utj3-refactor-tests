@@ -59,4 +59,4 @@ class SearchTest {
       stream.close();
    }
 }
-// STOP:test
+// END:test
