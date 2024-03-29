@@ -23,10 +23,10 @@ class SearchTest {
    void testSearch() throws IOException {
       // START:createStream
       var pageContent = "There are certain queer times and occasions "
-         + "in this strange mixed affair we call life when a man "
-         + "takes this whole universe for a vast practical joke, "
-         + "though the wit thereof he but dimly discerns, and more "
-         + "than suspects that the joke is at nobody's expense but his own.";
+          + "in this strange mixed affair we call life when a man takes "
+          + "this whole universe for a vast practical joke, though "
+          + "the wit thereof he but dimly discerns, and more than "
+          + "suspects that the joke is at nobody's expense but his own.";
       var bytes = pageContent.getBytes();
       var stream = new ByteArrayInputStream(bytes);
       // END:createStream
