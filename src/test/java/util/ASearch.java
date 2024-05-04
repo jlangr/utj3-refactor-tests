@@ -14,10 +14,7 @@ import java.util.logging.Level;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// START:suppress
 class ASearch {
-   // ...
-   // END:suppress
    static final String A_TITLE = "1";
 
    // START:suppress
@@ -69,6 +66,4 @@ class ASearch {
    private static ByteArrayInputStream streamOn(String text) {
        return new ByteArrayInputStream(text.getBytes());
    }
-   // START:suppress
 }
-// END:suppress
