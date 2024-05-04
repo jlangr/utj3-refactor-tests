@@ -48,7 +48,9 @@ class ASearch {
       var connection =
          new URL("http://bit.ly/15sYPA7").openConnection();
       var inputStream = connection.getInputStream();
+      // START_HIGHLIGHT
       var search = new Search(inputStream, "smelt", A_TITLE);
+      // END_HIGHLIGHT
 
       search.execute();
       assertTrue(search.getMatches().isEmpty());
