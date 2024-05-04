@@ -63,6 +63,4 @@ class SearchTest {
             fail("exception thrown in test" + e.getMessage());
         }
     }
-    // START:test
 }
-// END:test
