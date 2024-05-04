@@ -37,7 +37,9 @@ class ASearch {
                   "practical joke",
                   "or a vast practical joke, though t")),
           matches);
-      stream.close();
+      // START_HIGHLIGHT
+      stream.close(); // delete me
+      // END_HIGHLIGHT
    }
 
    @Test
