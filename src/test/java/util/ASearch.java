@@ -13,17 +13,22 @@ import java.util.logging.Level;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// START:test
 class ASearch {
+   // ...
+   // END:test
    static final String A_TITLE = "1";
-
    // START:test
    @Test
    void returnsMatchesWithSurroundingContext() {
       var stream = streamOn("There are certain queer times and occasions "
+          // ...
+          // END:test
           + "in this strange mixed affair we call life when a man "
           + "takes this whole universe for a vast practical joke, "
           + "though the wit thereof he but dimly discerns, and more "
           + "than suspects that the joke is at nobody's expense but his own.");
+      // START:test
       var search = new Search(stream, "practical joke", A_TITLE);
       Search.LOGGER.setLevel(Level.OFF);
       search.setSurroundingCharacterCount(10);
@@ -48,9 +53,11 @@ class ASearch {
       assertTrue(search.getMatches().isEmpty());
       inputStream.close();
    }
+   // ...
    // END:test
-
    private static ByteArrayInputStream streamOn(String text) {
        return new ByteArrayInputStream(text.getBytes());
    }
+   // START:test
 }
+// END:test
