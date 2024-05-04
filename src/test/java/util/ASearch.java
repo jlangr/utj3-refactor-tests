@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ASearch {
    static final String A_TITLE = "1";
 
+   // START:test
    @Test
    void returnsMatchesWithSurroundingContext() {
       var stream = streamOn("There are certain queer times and occasions "
@@ -36,7 +37,6 @@ class ASearch {
           matches);
    }
 
-   // START:test
    @Test
    void returnsNoMatchesWhenSearchTextNotFound() throws IOException {
       var connection =
