@@ -20,17 +20,27 @@ class SearchTest {
    static final String A_TITLE = "1";
 
    // START:test
+    // START:twoparts
    @Test
    void testSearch() throws IOException {
+       // END:twoparts
       // START_HIGHLIGHT
+       // START:twoparts
       var stream = streamOn("There are certain queer times and occasions "
+          // END:twoparts
           // END_HIGHLIGHT
           + "in this strange mixed affair we call life when a man "
           + "takes this whole universe for a vast practical joke, "
           + "though the wit thereof he but dimly discerns, and more "
           + "than suspects that the joke is at nobody's expense but his own.");
-      var search = new Search(stream, "practical joke", A_TITLE);
+      // END:test
+       // START:twoparts
       // ...
+      // START:test
+      var search = new Search(stream, "practical joke", A_TITLE);
+      // END:twoparts
+      // ...
+      // START:twoparts
       // END:test
       Search.LOGGER.setLevel(Level.OFF);
       search.setSurroundingCharacterCount(10);
@@ -54,6 +64,7 @@ class SearchTest {
       stream.close();
       // START:test
    }
+   // END:twoparts
 
    // START_HIGHLIGHT
    private ByteArrayInputStream streamOn(String text) {
