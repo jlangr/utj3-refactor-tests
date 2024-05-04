@@ -50,7 +50,6 @@ class ASearch {
       // START_HIGHLIGHT
       var search = new Search(inputStream, "smelt", A_TITLE);
       // END_HIGHLIGHT
-
       search.execute();
       assertTrue(search.getMatches().isEmpty());
       // START_HIGHLIGHT
