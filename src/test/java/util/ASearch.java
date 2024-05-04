@@ -54,7 +54,9 @@ class ASearch {
 
       search.execute();
       assertTrue(search.getMatches().isEmpty());
+      // START_HIGHLIGHT
       inputStream.close();
+      // END_HIGHLIGHT
    }
    // ...
    // END:test
