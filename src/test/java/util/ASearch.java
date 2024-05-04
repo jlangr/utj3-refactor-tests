@@ -20,7 +20,7 @@ class ASearch {
    static final String A_TITLE = "1";
    // START:test
    @Test
-   void returnsMatchesWithSurroundingContext() {
+   void returnsMatchesWithSurroundingContext() throws IOException {
       var stream = streamOn("There are certain queer times and occasions "
           // ...
           // END:test
@@ -40,6 +40,7 @@ class ASearch {
                   "practical joke",
                   "or a vast practical joke, though t")),
           matches);
+      stream.close();
    }
 
    @Test
