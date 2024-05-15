@@ -1,4 +1,6 @@
 package util;
 
-public record Match(String searchTitle, String searchString, String surroundingContext) {
-}
+// START:impl
+public record Match(
+   String searchTitle, String searchString, String surroundingContext) {}
+// END:impl
