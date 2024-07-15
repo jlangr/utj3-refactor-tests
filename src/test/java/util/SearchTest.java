@@ -18,8 +18,8 @@ public class SearchTest {
    public void testSearch() {
       try {
          String pageContent = """
-          There are certain queer times and occasions in this strange
-           mixed affair we call life when a man takes this whole universe
+          There are certain queer times and occasions in this strange mixed
+           affair we call life when a man takes this whole universe
            for a vast practical joke, though the wit thereof he but dimly
            discerns, and more than suspects that the joke is at nobody's
            expense but his own.""";
