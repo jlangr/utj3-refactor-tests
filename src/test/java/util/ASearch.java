@@ -27,9 +27,10 @@ class ASearch {
    @Test
    void returnsMatchesWithSurroundingContext() {
       // START_HIGHLIGHT
-      var stream = streamOn("rest of text here"
-              + "1234567890search term1234567890"
-               + "more rest of text");
+      var stream = streamOn("""
+         rest of text here
+         1234567890search term1234567890
+         more rest of text""");
       var search = new Search(stream, "search term", A_TITLE);
       // END_HIGHLIGHT
       search.setSurroundingCharacterCount(10);
